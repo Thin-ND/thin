@@ -3,7 +3,6 @@
 namespace App\GraphQL\Query;
 
 use App\User;
-use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
@@ -19,7 +18,7 @@ class UsersQuery extends Query
 
     public function type(): Type
     {
-        return GraphQL::paginate('users');
+        return GraphQL::paginate('user_type');
     }
 
     public function args(): array
@@ -28,10 +27,6 @@ class UsersQuery extends Query
             'id' => [
                 'name' => 'id',
                 'type' => Type::int()
-            ],
-            'email' => [
-                'name' => 'email',
-                'type' => Type::string()
             ]
         ];
     }

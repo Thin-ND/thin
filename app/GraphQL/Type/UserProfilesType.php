@@ -28,6 +28,14 @@ class UserProfilesType extends GraphQLType
             'last_name' => [
                 'type' => Type::string(),
                 'description' => 'The last name of user'
+            ],
+            'created_at' => [
+                'type' => Type::string(),
+                'description' => 'Creation datetime'
+            ],
+            'updated_at' => [
+                'type' => Type::string(),
+                'description' => 'Updating datetime'
             ]
         ];
     }

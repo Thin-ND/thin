@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 use App\GraphQL\Query\TestQuery;
 use App\GraphQL\Mutation\UpdateUserMutation;
-//use example\Mutation\ExampleMutation;
-//use example\Query\ExampleQuery;
-//use example\Type\ExampleRelationType;
-//use example\Type\ExampleType;
 
 return [
 
@@ -100,12 +96,13 @@ return [
     //      ],
     //  ]
     //
+
     'schemas' => [
         'default' => [
             'query' => [
-                 'test' => TestQuery::class,
 //                 'demo' => TestQuery::class,
                 'users' => \App\GraphQL\Query\UsersQuery::class,
+                'myprofile' => \App\GraphQL\Query\MyProfileQuery::class,
 
                 // Đây là khai báo query,
 
@@ -118,7 +115,9 @@ return [
                 // No nói rất rõ ràng là. không có cái query đó.
                 // anh thu lam cho e cai update xem no lam nhu nao cac buoc ra sao ...
                 // 'example_mutation'  => ExampleMutation::class,
-                'updateUser' => UpdateUserMutation::class
+                'updateUser' => UpdateUserMutation::class,
+                'newUser' => \App\GraphQL\Mutation\NewUserMutation::class,
+                'deleteUser' => \App\GraphQL\Mutation\DeleteUserMutation::class,
 
             ],
             'middleware' => [],
@@ -141,11 +140,10 @@ return [
     // ]
     //
     'types' => [
-        \App\GraphQL\Type\UsersType::class,
-        'user_profiles' => \App\GraphQL\Type\UserProfilesType::class
-        // 'example'           => ExampleType::class,
+        // cai nay la ten.
+        'user_type' => \App\GraphQL\Type\UsersType::class,
+        'user_profiles' => \App\GraphQL\Type\UserProfilesType::class,
         // 'relation_example'  => ExampleRelationType::class,
-        // \Rebing\GraphQL\Support\UploadType::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

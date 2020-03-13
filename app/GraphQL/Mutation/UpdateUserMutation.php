@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ardani
- * Date: 8/4/17
- * Time: 10:02 AM
- */
 
 namespace App\GraphQL\Mutation;
 
@@ -23,7 +17,7 @@ class UpdateUserMutation extends Mutation
 
     public function type(): Type
     {
-        return GraphQL::type('users');
+        return GraphQL::type('user_type');
     }
 
     public function args(): array
@@ -49,7 +43,6 @@ class UpdateUserMutation extends Mutation
 
         $user->name = $args['name'];
         $user->save();
-//        dd($args);
 
         return $user;
     }

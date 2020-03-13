@@ -30,9 +30,18 @@ class UsersType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The name of the user'
             ],
+            // field relation to model user_profiles
             'user_profiles' => [
                 'type' => GraphQL::type('user_profiles'),
                 'description' => 'The profile of the user'
+            ],
+            'created_at' => [
+                'type' => Type::string(),
+                'description' => 'Creation datetime'
+            ],
+            'updated_at' => [
+                'type' => Type::string(),
+                'description' => 'Updating datetime'
             ]
         ];
     }

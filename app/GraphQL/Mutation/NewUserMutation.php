@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ardani
- * Date: 8/4/17
- * Time: 10:02 AM
- */
 
 namespace App\GraphQL\Mutation;
 
@@ -19,12 +13,12 @@ class NewUserMutation extends Mutation
         'name' => 'NewUser'
     ];
 
-    public function type()
+    public function type(): Type
     {
-        return GraphQL::type('users');
+        return GraphQL::type('user_type');
     }
 
-    public function args()
+    public function args(): array
     {
         return [
             'name' => [
@@ -39,30 +33,16 @@ class NewUserMutation extends Mutation
                 'name' => 'password',
                 'type' => Type::nonNull(Type::string())
             ],
-            'first_name' => [
-                'name' => 'first_name',
-                'type' => Type::nonNull(Type::string())
-            ],
-            'last_name' => [
-                'name' => 'last_name',
-                'type' => Type::string()
-            ],
-            'avatar' => [
-                'name' => 'avatar',
-                'type' => Type::string()
-            ]
         ];
     }
 
     public function resolve($root, $args)
     {
         $args['password'] = bcrypt($args['password']);
-        $user = User::create($args);
+        $user = User::create($args); // create
         if (!$user) {
             return null;
         }
-
-        $user->user_profiles()->create($args);
         return $user;
     }
 }
