@@ -46,8 +46,12 @@ class UsersType extends GraphQLType
         ];
     }
 
-    protected function resolveEmailField($root, $args)
+    protected function resolveCreatedAtField($root, $args)
     {
-        return strtolower($root->email);
+        return $root->created_at->format('H:i:s');
+    }
+    protected function resolveUpdatedAtField($root, $args)
+    {
+        return $root->updated_at->format('Y-m-d');
     }
 }

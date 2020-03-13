@@ -39,4 +39,12 @@ class UserProfilesType extends GraphQLType
             ]
         ];
     }
+    protected function resolveCreatedAtField($root, $args)
+    {
+        return $root->created_at->format('Y-m-d H:i:s');
+    }
+    protected function resolveUpdatedAtField($root, $args)
+    {
+        return $root->updated_at->format('Y-m-d');
+    }
 }
